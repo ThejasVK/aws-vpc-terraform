@@ -1,0 +1,17 @@
+# Copy to terraform.tfvars and adjust. terraform.tfvars is git-ignored.
+
+project     = "vpc-lab"
+environment = "dev"
+region      = "us-east-1"
+vpc_cidr    = "10.0.0.0/16"
+az_count    = 2
+
+# Cost controls
+enable_nat_gateway = true # set false to avoid NAT hourly charges (private subnets lose internet)
+single_nat_gateway = true # false = one NAT per AZ (highly available, costs more)
+enable_flow_logs   = true
+create_instances   = true
+
+# Optional SSH access to the bastion. Leave empty to use SSM Session Manager only.
+# key_name          = "my-keypair"
+# ssh_allowed_cidrs = ["203.0.113.10/32"]
